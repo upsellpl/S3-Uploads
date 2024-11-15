@@ -39,10 +39,5 @@
 		"aws/aws-sdk-php": [
 			"S3"
 		]
-	},
-	"config": {
-		"allow-plugins": {
-			"composer/installers": false
-		}
 	}
 }
