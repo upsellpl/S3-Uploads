@@ -1,7 +1,7 @@
 {
-	"name": "humanmade/s3-uploads",
+	"name": "upsell/s3-uploads",
 	"description": "WordPress plugin to store uploads on S3",
-	"homepage": "https://github.com/humanmade/S3-Uploads",
+	"homepage": "https://github.com/upsellpl/S3-Uploads",
 	"keywords": [
 		"wordpress"
 	],
@@ -16,10 +16,10 @@
 		}
 	],
 	"support": {
-			"issues": "https://github.com/humanmade/s3-uploads/issues",
-			"source": "https://github.com/humanmade/s3-uploads"
+		"issues": "https://github.com/humanmade/s3-uploads/issues",
+		"source": "https://github.com/humanmade/s3-uploads"
 	},
-	"type": "wordpress-plugin",
+	"type": "library",
 	"require": {
 		"php": ">=8.0",
 		"composer/installers": "~1.0 || ^2.0",
@@ -33,12 +33,18 @@
 		"yoast/phpunit-polyfills": "^4.0"
 	},
 	"scripts": {
-		"test": "./tests/run-tests.sh",
-		"check-types": "./vendor/bin/psalm"
-	},
-	"config": {
-		"allow-plugins": {
-			"composer/installers": true
-		}
+        "test": "./tests/run-tests.sh",
+        "check-types": "./vendor/bin/psalm",
+        "pre-autoload-dump": "Aws\\Script\\Composer\\Composer::removeUnusedServices"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    },
+    "extra": {
+        "aws/aws-sdk-php": [
+            "S3"
+        ]
 	}
 }
